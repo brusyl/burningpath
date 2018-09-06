@@ -13,7 +13,8 @@ func _ready():
 #	# Update game logic here.
 #	pass
 
-func _on_Area2D_body_entered( body ):
+
+func _on_body_entered(body):
 	print(body)
 	if (not body.get("is_player") == null):
 		#$CollisionPolygon2D.disabled = true
