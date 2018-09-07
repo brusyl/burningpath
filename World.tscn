@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://KinematicBody2D.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://Fog.png" type="Texture" id=3]
 [ext_resource path="res://Piece.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Coin.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Mur_climb.gd" type="Script" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -70,7 +71,12 @@ anim_offset_random = 0.0
 anim_loop = false
 _sections_unfolded = [ "Angle", "Angular Velocity", "Color", "Emission Shape", "Gravity", "Initial Velocity", "Scale", "Spread" ]
 
-[node name="World" type="Node"]
+[sub_resource type="RectangleShape2D" id=6]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
+[node name="World" type="Node" index="0"]
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="." index="0"]
 
@@ -84,6 +90,7 @@ __meta__ = {
 "_edit_group_": true
 }
 is_player = true
+is_climb_area = false
 
 [node name="Sprite" type="Sprite" parent="KinematicBody2D" index="0"]
 
@@ -410,5 +417,28 @@ position = Vector2( 448, 448 )
 [node name="Node" parent="." index="14" instance=ExtResource( 5 )]
 
 position = Vector2( 614.995, 289.409 )
+
+[node name="Mur_climb" type="Area2D" parent="." index="15"]
+
+position = Vector2( 797.383, 246.714 )
+scale = Vector2( 1, 3.2292 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mur_climb" index="0"]
+
+position = Vector2( -266.908, 55.362 )
+scale = Vector2( 1.91633, 2.61838 )
+shape = SubResource( 6 )
+
+[connection signal="body_entered" from="Mur_climb" to="Mur_climb" method="_on_Mur_climb_body_entered"]
+
+[connection signal="body_exited" from="Mur_climb" to="KinematicBody2D" method="_on_Mur_climb_body_exited"]
 
 
