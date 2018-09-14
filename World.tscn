@@ -1,35 +1,30 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://KinematicBody2D.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
-[ext_resource path="res://Fog.png" type="Texture" id=3]
-[ext_resource path="res://Piece.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Coin.tscn" type="PackedScene" id=5]
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://Fog.png" type="Texture" id=2]
+[ext_resource path="res://Piece.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Coin.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Hero.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 32, 32 )
-
-[sub_resource type="RectangleShape2D" id=2]
-
-custom_solver_bias = 0.0
 extents = Vector2( 13, 13 )
 
-[sub_resource type="Curve" id=3]
+[sub_resource type="Curve" id=2]
 
 min_value = 0.0
 max_value = 1.0
 bake_resolution = 100
 _data = [ Vector2( 0, 0.209961 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=4]
+[sub_resource type="CurveTexture" id=3]
 
 flags = 4
 width = 2048
-curve = SubResource( 3 )
+curve = SubResource( 2 )
 
-[sub_resource type="ParticlesMaterial" id=5]
+[sub_resource type="ParticlesMaterial" id=4]
 
 render_priority = 0
 trail_divisor = 1
@@ -59,7 +54,7 @@ angle = 15.0
 angle_random = 0.0
 scale = 0.1
 scale_random = 0.0
-scale_curve = SubResource( 4 )
+scale_curve = SubResource( 3 )
 color = Color( 0.402344, 0.402344, 0.402344, 1 )
 hue_variation = 0.0
 hue_variation_random = 0.0
@@ -72,28 +67,7 @@ _sections_unfolded = [ "Angle", "Angular Velocity", "Color", "Emission Shape", "
 
 [node name="World" type="Node"]
 
-[node name="KinematicBody2D" type="KinematicBody2D" parent="." index="0"]
-
-position = Vector2( 288, 192 )
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-collision/safe_margin = 0.08
-script = ExtResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
-is_player = true
-
-[node name="Sprite" type="Sprite" parent="KinematicBody2D" index="0"]
-
-texture = ExtResource( 2 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D" index="1"]
-
-shape = SubResource( 1 )
-
-[node name="Wall" type="StaticBody2D" parent="." index="1"]
+[node name="Wall" type="StaticBody2D" parent="." index="0"]
 
 position = Vector2( 288, 512 )
 input_pickable = false
@@ -110,16 +84,16 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="Wall" index="0"]
 
 modulate = Color( 0, 0, 0, 1 )
-texture = ExtResource( 2 )
+texture = ExtResource( 1 )
 _sections_unfolded = [ "Visibility" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall" index="1"]
 
 scale = Vector2( 2.46154, 2.46154 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 _sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
 
-[node name="Wall2" type="StaticBody2D" parent="." index="2"]
+[node name="Wall2" type="StaticBody2D" parent="." index="1"]
 
 position = Vector2( 352, 512 )
 input_pickable = false
@@ -136,16 +110,16 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="Wall2" index="0"]
 
 modulate = Color( 0, 0, 0, 1 )
-texture = ExtResource( 2 )
+texture = ExtResource( 1 )
 _sections_unfolded = [ "Visibility" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall2" index="1"]
 
 scale = Vector2( 2.46154, 2.46154 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 _sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
 
-[node name="Wall3" type="StaticBody2D" parent="." index="3"]
+[node name="Wall3" type="StaticBody2D" parent="." index="2"]
 
 position = Vector2( 480, 512 )
 input_pickable = false
@@ -162,16 +136,16 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="Wall3" index="0"]
 
 modulate = Color( 0, 0, 0, 1 )
-texture = ExtResource( 2 )
+texture = ExtResource( 1 )
 _sections_unfolded = [ "Visibility" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall3" index="1"]
 
 scale = Vector2( 2.46154, 2.46154 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 _sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
 
-[node name="Wall5" type="StaticBody2D" parent="." index="4"]
+[node name="Wall5" type="StaticBody2D" parent="." index="3"]
 
 position = Vector2( 608, 384 )
 input_pickable = false
@@ -188,16 +162,16 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="Wall5" index="0"]
 
 modulate = Color( 0, 0, 0, 1 )
-texture = ExtResource( 2 )
+texture = ExtResource( 1 )
 _sections_unfolded = [ "Visibility" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall5" index="1"]
 
 scale = Vector2( 2.46154, 2.46154 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 _sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
 
-[node name="Wall9" type="StaticBody2D" parent="." index="5"]
+[node name="Wall9" type="StaticBody2D" parent="." index="4"]
 
 position = Vector2( 800, 384 )
 input_pickable = false
@@ -214,16 +188,16 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="Wall9" index="0"]
 
 modulate = Color( 0, 0, 0, 1 )
-texture = ExtResource( 2 )
+texture = ExtResource( 1 )
 _sections_unfolded = [ "Visibility" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall9" index="1"]
 
 scale = Vector2( 2.46154, 2.46154 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 _sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
 
-[node name="Wall10" type="StaticBody2D" parent="." index="6"]
+[node name="Wall10" type="StaticBody2D" parent="." index="5"]
 
 position = Vector2( 736, 384 )
 input_pickable = false
@@ -240,16 +214,16 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="Wall10" index="0"]
 
 modulate = Color( 0, 0, 0, 1 )
-texture = ExtResource( 2 )
+texture = ExtResource( 1 )
 _sections_unfolded = [ "Visibility" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall10" index="1"]
 
 scale = Vector2( 2.46154, 2.46154 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 _sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
 
-[node name="Wall11" type="StaticBody2D" parent="." index="7"]
+[node name="Wall11" type="StaticBody2D" parent="." index="6"]
 
 position = Vector2( 672, 384 )
 input_pickable = false
@@ -266,16 +240,16 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="Wall11" index="0"]
 
 modulate = Color( 0, 0, 0, 1 )
-texture = ExtResource( 2 )
+texture = ExtResource( 1 )
 _sections_unfolded = [ "Visibility" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall11" index="1"]
 
 scale = Vector2( 2.46154, 2.46154 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 _sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
 
-[node name="Wall6" type="StaticBody2D" parent="." index="8"]
+[node name="Wall6" type="StaticBody2D" parent="." index="7"]
 
 position = Vector2( 544, 384 )
 input_pickable = false
@@ -292,16 +266,16 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="Wall6" index="0"]
 
 modulate = Color( 0, 0, 0, 1 )
-texture = ExtResource( 2 )
+texture = ExtResource( 1 )
 _sections_unfolded = [ "Visibility" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall6" index="1"]
 
 scale = Vector2( 2.46154, 2.46154 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 _sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
 
-[node name="Wall7" type="StaticBody2D" parent="." index="9"]
+[node name="Wall7" type="StaticBody2D" parent="." index="8"]
 
 position = Vector2( 544, 448 )
 input_pickable = false
@@ -318,16 +292,16 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="Wall7" index="0"]
 
 modulate = Color( 0, 0, 0, 1 )
-texture = ExtResource( 2 )
+texture = ExtResource( 1 )
 _sections_unfolded = [ "Visibility" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall7" index="1"]
 
 scale = Vector2( 2.46154, 2.46154 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 _sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
 
-[node name="Wall8" type="StaticBody2D" parent="." index="10"]
+[node name="Wall8" type="StaticBody2D" parent="." index="9"]
 
 position = Vector2( 544, 512 )
 input_pickable = false
@@ -344,16 +318,16 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="Wall8" index="0"]
 
 modulate = Color( 0, 0, 0, 1 )
-texture = ExtResource( 2 )
+texture = ExtResource( 1 )
 _sections_unfolded = [ "Visibility" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall8" index="1"]
 
 scale = Vector2( 2.46154, 2.46154 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 _sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
 
-[node name="Wall4" type="StaticBody2D" parent="." index="11"]
+[node name="Wall4" type="StaticBody2D" parent="." index="10"]
 
 position = Vector2( 416, 512 )
 input_pickable = false
@@ -370,14 +344,51 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="Wall4" index="0"]
 
 modulate = Color( 0, 0, 0, 1 )
-texture = ExtResource( 2 )
+texture = ExtResource( 1 )
 _sections_unfolded = [ "Visibility" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall4" index="1"]
 
 scale = Vector2( 2.46154, 2.46154 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 _sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
+
+[node name="Area2D" type="Area2D" parent="." index="11"]
+
+position = Vector2( 816, 271 )
+scale = Vector2( 0.5, 2.53125 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="Sprite" type="Sprite" parent="Area2D" index="0"]
+
+modulate = Color( 0, 0, 0, 1 )
+texture = ExtResource( 1 )
+_sections_unfolded = [ "Visibility" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="1"]
+
+scale = Vector2( 2.46154, 2.46154 )
+shape = SubResource( 1 )
+_sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
+
+[node name="Wall12" type="StaticBody2D" parent="Area2D" index="2"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Particles2D" type="Particles2D" parent="." index="12"]
 
@@ -396,19 +407,23 @@ fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
 local_coords = true
 draw_order = 0
-process_material = SubResource( 5 )
-texture = ExtResource( 3 )
+process_material = SubResource( 4 )
+texture = ExtResource( 2 )
 normal_map = null
 h_frames = 1
 v_frames = 1
 _sections_unfolded = [ "Process Material", "Textures", "Time", "Transform", "Visibility" ]
 
-[node name="Node2D" parent="." index="13" instance=ExtResource( 4 )]
+[node name="Node2D" parent="." index="13" instance=ExtResource( 3 )]
 
 position = Vector2( 448, 448 )
 
-[node name="Node" parent="." index="14" instance=ExtResource( 5 )]
+[node name="Node" parent="." index="14" instance=ExtResource( 4 )]
 
 position = Vector2( 614.995, 289.409 )
+
+[node name="KinematicBody2D" parent="." index="15" instance=ExtResource( 5 )]
+
+position = Vector2( 330, 250 )
 
 
