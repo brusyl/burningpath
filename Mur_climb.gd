@@ -20,10 +20,3 @@ func _on_Mur_climb_body_entered(body):
 	if (not body.get("is_player") == null):
 		body.set("is_climb_area", true)
 		print(body.get("is_climb_area"))
-
-func _on_body_exited(body):
-	print("je sors")
-	print(body)
-	if (not body.get("is_player") == null):
-		body.set("is_climb_area", false)
-		print(body.get("is_climb_area"))
