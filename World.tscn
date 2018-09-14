@@ -65,7 +65,7 @@ anim_offset_random = 0.0
 anim_loop = false
 _sections_unfolded = [ "Angle", "Angular Velocity", "Color", "Emission Shape", "Gravity", "Initial Velocity", "Scale", "Spread" ]
 
-[node name="World" type="Node"]
+[node name="World" type="Node" index="0"]
 
 [node name="Wall" type="StaticBody2D" parent="." index="0"]
 
