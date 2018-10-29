@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Hero.tscn" type="PackedScene" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -6,6 +6,17 @@
 [ext_resource path="res://Piece.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Coin.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Mur_climb.gd" type="Script" id=6]
+[ext_resource path="res://tileset.tres" type="TileSet" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
 
 [sub_resource type="RectangleShape2D" id=3]
 
@@ -52,17 +63,7 @@ extents = Vector2( 10, 10 )
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
 
-[sub_resource type="RectangleShape2D" id=12]
-
-custom_solver_bias = 0.0
-extents = Vector2( 10, 10 )
-
-[sub_resource type="RectangleShape2D" id=13]
-
-custom_solver_bias = 0.0
-extents = Vector2( 10, 10 )
-
-[sub_resource type="ParticlesMaterial" id=1]
+[sub_resource type="ParticlesMaterial" id=12]
 
 render_priority = 0
 trail_divisor = 1
@@ -102,12 +103,12 @@ anim_offset_random = 0.0
 anim_loop = false
 _sections_unfolded = [ "Angle", "Angular Velocity", "Color", "Emission Shape", "Gravity", "Initial Velocity", "Scale", "Spread" ]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=13]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
 
-[node name="World" type="Node" index="0"]
+[node name="World" type="Node"]
 
 [node name="KinematicBody2D" parent="." index="0" instance=ExtResource( 1 )]
 
@@ -136,7 +137,7 @@ _sections_unfolded = [ "Visibility" ]
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall" index="1"]
 
 scale = Vector2( 2.46154, 2.46154 )
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 _sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
 
 [node name="Wall2" type="StaticBody2D" parent="." index="2"]
@@ -162,7 +163,7 @@ _sections_unfolded = [ "Visibility" ]
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall2" index="1"]
 
 scale = Vector2( 2.46154, 2.46154 )
-shape = SubResource( 4 )
+shape = SubResource( 2 )
 _sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
 
 [node name="Wall3" type="StaticBody2D" parent="." index="3"]
@@ -188,7 +189,7 @@ _sections_unfolded = [ "Visibility" ]
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall3" index="1"]
 
 scale = Vector2( 2.46154, 2.46154 )
-shape = SubResource( 5 )
+shape = SubResource( 3 )
 _sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
 
 [node name="Wall5" type="StaticBody2D" parent="." index="4"]
@@ -214,7 +215,7 @@ _sections_unfolded = [ "Visibility" ]
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall5" index="1"]
 
 scale = Vector2( 2.46154, 2.46154 )
-shape = SubResource( 6 )
+shape = SubResource( 4 )
 _sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
 
 [node name="Wall9" type="StaticBody2D" parent="." index="5"]
@@ -240,7 +241,7 @@ _sections_unfolded = [ "Visibility" ]
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall9" index="1"]
 
 scale = Vector2( 2.46154, 2.46154 )
-shape = SubResource( 7 )
+shape = SubResource( 5 )
 _sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
 
 [node name="Wall10" type="StaticBody2D" parent="." index="6"]
@@ -266,7 +267,7 @@ _sections_unfolded = [ "Visibility" ]
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall10" index="1"]
 
 scale = Vector2( 2.46154, 2.46154 )
-shape = SubResource( 8 )
+shape = SubResource( 6 )
 _sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
 
 [node name="Wall11" type="StaticBody2D" parent="." index="7"]
@@ -292,7 +293,7 @@ _sections_unfolded = [ "Visibility" ]
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall11" index="1"]
 
 scale = Vector2( 2.46154, 2.46154 )
-shape = SubResource( 9 )
+shape = SubResource( 7 )
 _sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
 
 [node name="Wall6" type="StaticBody2D" parent="." index="8"]
@@ -318,7 +319,7 @@ _sections_unfolded = [ "Visibility" ]
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall6" index="1"]
 
 scale = Vector2( 2.46154, 2.46154 )
-shape = SubResource( 10 )
+shape = SubResource( 8 )
 _sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
 
 [node name="Wall7" type="StaticBody2D" parent="." index="9"]
@@ -344,7 +345,7 @@ _sections_unfolded = [ "Visibility" ]
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall7" index="1"]
 
 scale = Vector2( 2.46154, 2.46154 )
-shape = SubResource( 11 )
+shape = SubResource( 9 )
 _sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
 
 [node name="Wall8" type="StaticBody2D" parent="." index="10"]
@@ -370,7 +371,7 @@ _sections_unfolded = [ "Visibility" ]
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall8" index="1"]
 
 scale = Vector2( 2.46154, 2.46154 )
-shape = SubResource( 12 )
+shape = SubResource( 10 )
 _sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
 
 [node name="Wall4" type="StaticBody2D" parent="." index="11"]
@@ -396,7 +397,7 @@ _sections_unfolded = [ "Visibility" ]
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall4" index="1"]
 
 scale = Vector2( 2.46154, 2.46154 )
-shape = SubResource( 13 )
+shape = SubResource( 11 )
 _sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
 
 [node name="Particles2D" type="Particles2D" parent="." index="12"]
@@ -416,7 +417,7 @@ fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
 local_coords = true
 draw_order = 0
-process_material = SubResource( 1 )
+process_material = SubResource( 12 )
 texture = ExtResource( 3 )
 normal_map = null
 h_frames = 1
@@ -448,7 +449,38 @@ script = ExtResource( 6 )
 
 position = Vector2( -266.908, 55.362 )
 scale = Vector2( 1.91633, 2.61838 )
-shape = SubResource( 2 )
+shape = SubResource( 13 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." index="16"]
+
+position = Vector2( 910, 400 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="TileMap" type="TileMap" parent="." index="17"]
+
+mode = 0
+tile_set = ExtResource( 7 )
+cell_size = Vector2( 64, 64 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( 196611, 2, 0, 196623, 536870924, 0, 262147, 2, 0, 262158, 536870924, 0, 327683, 2, 0, 327693, 536870924, 0, 393219, 2, 0, 458755, 2, 0 )
 
 [connection signal="body_entered" from="Mur_climb" to="Mur_climb" method="_on_Mur_climb_body_entered"]
 
